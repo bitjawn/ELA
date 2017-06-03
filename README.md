@@ -14,11 +14,15 @@
 					<li>1.17.0 x64</li>
 				</ul>
 			</li>
+			<li>NodeJS
+				<ul>
+					<li>NodeJS: 7.7.4</li>
+					<li>NPM: 4.5.0</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
-	<li>NodeJS: 7.7.4</li>
-	<li>NPM: 4.5.0</li>
-	<li>Passport: </li>
+	<li>Passport: 0.3.2</li>
 	<li>Mongoose: 4.10.4</li>
 	<li>Foundation: 6.3.1</li>
 	<li>External Dependencies
