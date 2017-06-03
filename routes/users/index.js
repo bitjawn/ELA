@@ -9,11 +9,11 @@ const flash = require('connect-flash');
 // user profile
 router.get('/profile', isLoggedIn, (req, res) => {
 	let user = req.user;
-	return res.render('users/profile', {title:cfc('profile')});
+	return res.render('users/profile', {title:cfc('profile'), user:user});
 });
 
 // logout
-router.get('/logout', csrfProtection, isLoggedIn, function(req, res){
+router.get('/signout', csrfProtection, isLoggedIn, function(req, res){
 	req.logout();
 	res.redirect('/users/signin');
 });
