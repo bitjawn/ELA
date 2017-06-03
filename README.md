@@ -1,5 +1,5 @@
 # Express Passport Demo
-<h3>A basic web template with index, about and contact views, signup and signin capability.</h3>
+<h3>A basic web template with index, about and contact views, plus signup and signin capability.</h3>
 
 <ul>
 	<li>Platform

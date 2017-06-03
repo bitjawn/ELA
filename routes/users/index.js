@@ -13,7 +13,9 @@ router.get('/profile', isLoggedIn, (req, res) => {
 		title:cfc('profile'),
 		user:user, greeting:timeOfDay(user),
 		fname:cfc(user.fname),
-		lname:cfc(user.lname)});
+		lname:cfc(user.lname),
+		uname:cfc(user.uname),
+		email:cfc(user.email)});
 	});
 
 // logout
