@@ -16,7 +16,7 @@
 			</li>
 			<li>NodeJS
 				<ul>
-					<li>NodeJS: 7.7.4</li>
+					<li>NodeJS: 7.10.0</li>
 					<li>NPM: 5.0.1</li>
 				</ul>
 			</li>
