@@ -2,20 +2,16 @@
 <h3>A basic web template with index, about and contact views, signup and signin capability.</h3>
 
 <ul>
-	<li>Platform and Tools
+	<li>Platform
 		<ul>
 			<li>Ubuntu: 16.04
 				<ul>
 					<li>Arch: x64</li>
 				</ul>
 			</li>
-			<li>Atom
+			<li>Tools
 				<ul>
-					<li>1.17.0 x64</li>
-				</ul>
-			</li>
-			<li>NodeJS
-				<ul>
+					<li>Atom: 1.17.0 x64</li>
 					<li>NodeJS: 7.10.0</li>
 					<li>NPM: 5.0.1</li>
 				</ul>
