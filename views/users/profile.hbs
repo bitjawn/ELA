@@ -10,40 +10,91 @@
 {{/if}}
 
 <div class="row">
-  <div class="small-12 medium-12 large-12 columns">
+  <div class="small-12 medium-12 large-12 columns" style="margin:25px;">
     <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
-      <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true"><strong>{{greeting}}</strong></a></li>
-      <li class="tabs-title"><a href="#panel2c"><strong>Contact</strong></a></li>
-      <li class="tabs-title"><a href="#panel3c"><strong>Image</strong></a></li>
+	      <li class="tabs-title is-active"><a href="#summary" aria-selected="true"><strong>{{greeting}}</strong></a></li>
+      <li class="tabs-title"><a href="#name"><strong>Name</strong></a></li>
+      <li class="tabs-title"><a href="#contact"><strong>Contact</strong></a></li>
+      <li class="tabs-title"><a href="#picture"><strong>Picture</strong></a></li>
+      <li class="tabs-title"><a href="/users/security"><strong>Security</strong></a></li>
     </ul>
 
     <div class="tabs-content" data-tabs-content="collapsing-tabs">
-      <div class="tabs-panel is-active" id="panel1c">
-        <table class="hover">
-          <thead>
-            <tr>
-              <th width="150">First Name</th>
-              <th width="150">Last Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{user.fname}}</td>
-              <td>{{user.lname}}</td>
-            </tr>
-          </tbody>
-        </table>
+			<div class="tabs-panel is-active" id="summary">
+        <div class="row">
+					<div class="left-floater">
+						<div class="card" style="width:140px;margin-left:25px;">
+							<div class="card-section">
+								{{#if user.picture}}
+									<img src="/{{user.picture}}">
+								{{else}}
+									<span class="thumbnail"><i class="fa fa-user" style="font-size:128px;"></i></span>
+								{{/if}}
+							</div>
+
+							<div class="card-divider">
+								<b>{{fname}} &nbsp;{{lname}}</b>
+							</div>
+						</div>
+					</div>
+
+					<div class="right-floater">
+
+					</div>
+				</div>
       </div>
-      <div class="tabs-panel" id="panel2c">
-        <p><strong>Email: </strong>{{user.email}}</p>
+
+      <div class="tabs-panel is-active" id="name">
+	      <form>
+					<div class="input-group">
+						<span class="input-group-label"><i class="fa fa-user"></i></span>
+						<input class="input-group-field" type="text" value="{{user.fname}}" required>
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-label"><i class="fa fa-user"></i></span>
+						<input class="input-group-field" type="text" value="{{user.lname}}" required>
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-label"><i class="fa fa-user"></i></span>
+						<input class="input-group-field" type="text" value="{{user.uname}}" required>
+					</div>
+				</form>
       </div>
-      <div class="tabs-panel" id="panel3c">
-        {{#if user.picture}}
-          <img class="" src="/{{user.picture}}">
-        {{else}}
-          <span class="thumbnail"><i class="fa fa-user" style="font-size:128px;"></i></span>
-        {{/if}}
+
+      <div class="tabs-panel" id="contact">
+				<form class="read-only">
+					<div class="input-group">
+						<span class="input-group-label"><i class="fa fa-envelope"></i></span>
+						<input class="input-group-field" type="email" value="{{user.email}}" required>
+					</div>
+				</form>
       </div>
+
+      <div class="tabs-panel" id="picture">
+				<div class="row">
+					<div class="left-floater">
+						<div style="margin:25px;">
+			        {{#if user.picture}}
+			          <img class="" src="/{{user.picture}}">
+			        {{else}}
+			          <span class="thumbnail"><i class="fa fa-user" style="font-size:128px;"></i></span>
+			        {{/if}}
+						</div>
+					</div>
+
+					<div class="right-floater">
+						<form class="read-only" style="margin:25px;">
+							<div class="input-group">
+								<span class="input-group-label"><i class="fa fa-picture-o"></i></span>
+								<input class="input-group-field" type="url" placeholder="Picutre URL" required>
+							</div>
+						</form>
+					</div>
+				</div>
+      </div>
+
     </div>
   </div>
 </div>

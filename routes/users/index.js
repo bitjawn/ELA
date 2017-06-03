@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 // user profile
 router.get('/profile', isLoggedIn, (req, res) => {
 	let user = req.user;
-	return res.render('users/profile', {title:cfc('profile'), user:user, greeting:timeOfDay(user)});
+	return res.render('users/profile', {title:cfc('profile'), user:user, greeting:timeOfDay(user), fname:cfc(user.fname), lname:cfc(user.lname)});
 });
 
 // logout
