@@ -4,7 +4,7 @@
 <ul>
 	<li>Platform and Tools
 		<ul>
-			<li>Ubuntu: 1604
+			<li>Ubuntu: 16.04
 				<ul>
 					<li>Arch: x64</li>
 				</ul>
