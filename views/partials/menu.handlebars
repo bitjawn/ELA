@@ -18,6 +18,10 @@
 		</ul>
 	</div>
 	<div class="top-bar-right">
-
+		{{#if req.authenticate}}
+		<ul>
+			<li><a href="/users/logout">Logout</a></li>
+		</ul>
+		{{/if}}
 	</div>
 </div>

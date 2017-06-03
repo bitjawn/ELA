@@ -7,12 +7,13 @@ const passport = require('passport');
 const flash = require('connect-flash');
 
 // user profile
-router.get('/profile', csrfProtection, isLoggedIn, (req, res) => {
-	res.render('users/profile', {title:cfc('profile')});
+router.get('/profile', isLoggedIn, (req, res) => {
+	let user = req.user;
+	return res.render('users/profile', {title:cfc('profile')});
 });
 
 // logout
-router.get('/logout', csrfProtection, function(req, res){
+router.get('/logout', csrfProtection, isLoggedIn, function(req, res){
 	req.logout();
 	res.redirect('/users/signin');
 });
@@ -61,14 +62,16 @@ module.exports = router;
 
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
-		return res.redirect('/users/profile');
+		next();
+	} else {
+		res.redirect('/users/signin');
 	}
-	return res.redirect('/users/signin');
 }
 
 function notLoggedIn(req, res, next) {
 	if (!req.isAuthenticated()) {
-		return res.redirect('/users/signin');
+		res.redirect('/users/signin');
+	} else {
+		next();
 	}
-	return res.redirect('/users/profile');
 }
