@@ -12,7 +12,7 @@
 <div class="row">
   <div class="small-12 medium-12 large-12 columns" style="margin:25px;">
     <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
-	      <li class="tabs-title is-active"><a href="#summary" aria-selected="true"><strong>{{greeting}}</strong></a></li>
+      <li class="tabs-title is-active"><a href="#summary" aria-selected="true"><strong>{{greeting}}</strong></a></li>
       <li class="tabs-title"><a href="#name"><strong>Name</strong></a></li>
       <li class="tabs-title"><a href="#contact"><strong>Contact</strong></a></li>
       <li class="tabs-title"><a href="#picture"><strong>Picture</strong></a></li>
@@ -39,7 +39,15 @@
 					</div>
 
 					<div class="right-floater">
+						<div class="card" style="width:140px;margin-left:25px;">
+							<div class="card-section">
+								<b>{{user.uname}}</b>
+							</div>
 
+							<div class="card-divider">
+								<b>{{user.email}}</b>
+							</div>
+						</div>
 					</div>
 				</div>
       </div>
