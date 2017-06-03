@@ -1,3 +1,49 @@
+{{#if messages}}
+	{{#each messages}}
+	<div class="alert callout" data-closable style="margin:25px; padding:10px;">
+		<p>{{.}}</p>
+		<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	{{/each}}
+{{/if}}
+
 <div class="row">
-  <h4>{{user.fname}}</h4>
+  <div class="small-12 medium-12 large-12 columns">
+    <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+      <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true"><strong>{{greeting}}</strong></a></li>
+      <li class="tabs-title"><a href="#panel2c"><strong>Contact</strong></a></li>
+      <li class="tabs-title"><a href="#panel3c"><strong>Image</strong></a></li>
+    </ul>
+
+    <div class="tabs-content" data-tabs-content="collapsing-tabs">
+      <div class="tabs-panel is-active" id="panel1c">
+        <table class="hover">
+          <thead>
+            <tr>
+              <th width="150">First Name</th>
+              <th width="150">Last Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{user.fname}}</td>
+              <td>{{user.lname}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tabs-panel" id="panel2c">
+        <p><strong>Email: </strong>{{user.email}}</p>
+      </div>
+      <div class="tabs-panel" id="panel3c">
+        {{#if user.picture}}
+          <img class="" src="/{{user.picture}}">
+        {{else}}
+          <span class="thumbnail"><i class="fa fa-user" style="font-size:128px;"></i></span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </div>

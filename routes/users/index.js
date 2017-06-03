@@ -9,7 +9,19 @@ const flash = require('connect-flash');
 // user profile
 router.get('/profile', isLoggedIn, (req, res) => {
 	let user = req.user;
-	return res.render('users/profile', {title:cfc('profile'), user:user});
+	let greet = '';
+	let date = new Date();
+
+	if (date.getHours() >= 0 && date.getHours() < 12 && date.getMinutes() <= 59) {
+		greet = 'Good morning ' + cfc(user.fname);
+	} else if (date.getHours() >= 12 && date.getHours() <= 17 && date.getMinutes() <= 59) {
+		greet = 'Good afternoon ' + cfc(user.fname);
+	} else {
+		greet = 'Good evening ' + cfc(user.fname);
+	}
+
+	let greeting = greet;
+	return res.render('users/profile', {title:cfc('profile'), user:user, greeting:greet});
 });
 
 // logout
