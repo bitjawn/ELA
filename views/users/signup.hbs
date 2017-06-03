@@ -1,0 +1,64 @@
+{{#if messages}}
+	{{#each messages}}
+	<div class="alert callout" data-closable style="margin:25px; padding:10px;">
+		<p>{{.}}</p>
+		<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	{{/each}}
+{{/if}}
+
+<div class="form row" style="margin:25px; padding:10px;">
+	<h3 class="header">Registration</h3>
+	<form method="POST" action="/users/signup">
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-user"></i>
+			</span>
+			<input type="text" class="input-group-field" name="fname" placeholder="First name" required>
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-user"></i>
+			</span>
+			<input type="text" class="input-group-field" name="lname" placeholder="Last name" required>
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-user"></i>
+			</span>
+			<input type="text" class="input-group-field" name="uname" placeholder="Username" required>
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-envelope"></i>
+			</span>
+			<input type="email" class="input-group-field" name="email" placeholder="Email" required>
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-lock"></i>
+			</span>
+			<input type="password" class="input-group-field" name="pwd" placeholder="Password" required>
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-lock"></i>
+			</span>
+			<input type="password" class="input-group-field" name="pwd2" placeholder="Confirm password" required>
+		</div>
+
+		<input type="hidden" class="input-group-field" name="_csrf" value={{csrfToken}} readOnly>
+		<input type="hidden" class="input-group-field" name="admin" value={{isAdmin}} readOnly>
+
+		<div class="input-group-button">
+			<input type="submit" class="button" value="Submit">
+		</div>
+	</form>
+</div>

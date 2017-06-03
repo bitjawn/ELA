@@ -1,0 +1,175 @@
+/* Global */
+body {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.border {
+	border:solid 1pt rgb(212,221,200);
+}
+
+.left-floater,
+.right-floater {
+	width:45%;
+}
+
+.left-floater {
+	float:left;
+}
+
+.center-floater {
+	float:center;
+}
+
+.right-floater {
+	float:right;
+}
+
+.map {
+	margin:10px;
+}
+
+.header {
+	font-weight: bold;
+	font-family: fantasy, georgia, serif, "sans serif", inherit;
+	font-size: 28pt;
+	text-align: center;
+	color: rgb(7,7,100);
+}
+
+.form {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+
+iframe {
+	width: 100%;
+	height: 50vh;
+}
+
+
+
+
+
+
+
+
+
+
+/*Scrollbar
+*/
+.v-scroll {
+	overflow:scroll;
+}
+
+::-webkit-scrollbar {
+	width: 0px;  /* remove scrollbar space */
+	background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+::-webkit-scrollbar-thumb {
+	background: transparent;
+}
+
+@media screen and (max-width: 520px) {
+	.left-floater,
+	.right-floater,
+	.center-floater {
+		float:none;
+		text-align: center;
+	}
+
+	.left-floater,
+	.right-floater,
+	.center-floater {
+		margin:auto;
+		width:100%;
+	}
+
+	.thumbnail {
+		width:100%;
+		height:100%;
+	}
+
+	.map,
+	.right-floater form,
+	.left-floater * {
+		margin:0;
+		padding:5px;
+		width:100%;
+		height:25;
+	}
+
+	.left-floater p {
+		text-align:center;
+	}
+	.header {
+		text-align:center;
+		font-family: "Comic Sans MS", cursive, sans-serif;
+		font-weight:500;
+		word-spacing:1px;
+	}
+}
+
+@media screen and (max-width: 830px) {
+	.left-floater,
+	.right-floater,
+	.center-floater {
+		float:none;
+		text-align: center;
+	}
+
+	.left-floater,
+	.right-floater,
+	.center-floater {
+		margin:auto;
+		text-align:center;
+		width:100%;
+	}
+
+	img[class="logo"] {
+		border:solid 1pt rgb(200,200,210);
+		width:555px;
+		height:355px;
+		padding:0px;
+		margin:0px;
+	}
+
+	.card-section>p {
+		/* border:solid 1pt rgb(200,200,210); */
+		width:100%;
+		margin:0px;
+		padding:0;
+	}
+
+	.card {
+		border:solid 1pt rgb(200,200,210);
+		width:400px;
+		margin:10px;
+		padding:0;
+	}
+
+	.map,
+	.right-floater form,
+	.left-floater * {
+		margin:0;
+		padding:5px;
+		width:100%;
+		height:25;
+	}
+
+	.left-floater p {
+		text-align:center;
+	}
+
+	.message p {
+		text-align:left;
+	}
+}
