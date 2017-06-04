@@ -49,6 +49,7 @@ body {
 .delete-article {
 	width: 15%;
 	margin:25px;
+	font-weight: bold;
 }
 
 .article-list {
