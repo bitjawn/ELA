@@ -11,15 +11,15 @@ var articleSchema = new Schema({
 		private: {type: Boolean, required: true},
 });
 
-userSchema.statics.findByTitle = function(keyword, cb) {
+articleSchema.statics.findByTitle = function(keyword, cb) {
   return this.find({title: new RegExp(keyword, 'i')}, cb);
 };
 
-userSchema.statics.findByAuthor = function(keyword, cb) {
+articleSchema.statics.findByAuthor = function(keyword, cb) {
   return this.find({author: new RegExp(keyword, 'i')}, cb);
 };
 
-userSchema.statics.findByDate = function(keyword, cb) {
+articleSchema.statics.findByDate = function(keyword, cb) {
   return this.find({postDate: new RegExp(keyword, 'i')}, cb);
 };
 
