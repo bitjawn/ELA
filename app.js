@@ -12,6 +12,8 @@ const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const logger = require('morgan');
 
+mongoose.Promise = global.Promise;
+
 // routers
 const index = require('./routes/index');
 const users = require('./routes/users/index');
