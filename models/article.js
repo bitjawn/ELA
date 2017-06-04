@@ -4,7 +4,8 @@ const mongoose = require('mongoose'),
 
 var articleSchema = new Schema({
     title: {type: String, required: true},
-    Author: {type: String, required: true},
+    author: {type: String, required: true},
+		body: {type: String, require: true},
 		postDate: {type: String, required: true},
 		postTime: {type: String, required: true},
     url: {type: String, required: false},
