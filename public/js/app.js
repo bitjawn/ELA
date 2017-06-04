@@ -1,39 +1,19 @@
 $(document)
 .ready(function(){
 
-    $('#textInput').on('click', function(){
-		addTextInput();
-	});
+  $('#textInput').on('click', function(){
+    addTextInput();
+  });
 
-    $('#passwordInput').on('click', function(){
-		addPasswordInput();
-	});
+  $('#passwordInput').on('click', function(){
+    addPasswordInput();
+  });
 
-    $('#emailInput').on('click', function(){
-		addEmailInput();
-	});
+  $('#emailInput').on('click', function(){
+    addEmailInput();
+  });
 
-    $('.category').on('click', function(){
-        var category = $(this).data('category');
-        const url = '/products/' + category;
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function(data){ window.location.href=url; },
-            error: function(err){ console.log(err); }
-        });
-    });
 
-    $('.product').on('click', function(){
-        var id = $(this).data('id');
-        var url = '/product/' + id;
-        $.ajax({
-            url:url,
-            type:'GET',
-            success:function(data){window.location.href=url;},
-            error:function(err) { console.log(err);}
-        });
-    });
 
 })
 .foundation()

@@ -45,7 +45,8 @@ body {
 .add-article,
 .search-articles,
 .view-article,
-.edit-article {
+.edit-article,
+.delete-article {
 	width: 15%;
 	margin:25px;
 }

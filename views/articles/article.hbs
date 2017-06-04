@@ -1,0 +1,42 @@
+{{#if articles}}
+	<div class="row v-scroll list">
+		<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="false">
+			{{#each articles}}
+			<li class="accordion-item" data-accordion-item>
+				<a href="#{{id}}" class="accordion-title">{{title}}</a>
+				<div class="accordion-content" data-tab-content id="{{id}}">
+					<div class="row" style="margin-left:25px; margin-right:25px; margin-bottom:10px;">
+						{{body}}
+					</div>
+
+					<div class="row" style="margin-left:25px; margin-right:25px;">
+						<a href="#" data-id="{{id}}" class="left-floater button primary view-article">View {{title}}</a>
+						<a href="#" data-id="{{id}}" class="right-floater button success edit-article">Edit {{title}}</a>
+					</div>
+				</div>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+{{else if article}}
+	<div class="row v-scroll list">
+		<div class="card">
+			<div class="card-divider">
+				<h4 class="header">{{article.title}}</h4>
+				<p style="text-align:left; margin:0; padding:0;">
+					Author: {{article.author}}</br>
+					Posted: {{article.postDate}} @ {{article.postTime}}
+				</p>
+			</div>
+
+			<div class="card-section">
+				{{article.body}}
+			</div>
+
+			<div class="card-section clearfix">
+				<a href="/articles/article/edit/{{id}}" class="left-floater button primary view-article">Edit {{article.title}}</a>
+				<a href="#" data-id="{{id}}" class="right-floater button alert delete-article">Delete {{article.title}}</a>
+			</div>
+		</div>
+	</div>
+{{/if}}

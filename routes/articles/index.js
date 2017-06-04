@@ -18,11 +18,12 @@ router.get('/', (req, res) => {
 
 // view single article
 router.get('/article/:id', (req, res) => {
-	Article.findOne({'id':req.params.id}, (err, article) => {
+	Article.findById(req.params.id, (err, article) => {
 		if (err) {
 			console.log(err);
 		}
 		res.render('articles/article', {title:cfc(article.title), article:article});
+		// console.log(article)
 	});
 });
 
