@@ -4,13 +4,10 @@
 <ul>
 	<li>Platform
 		<ul>
-			<li>Ubuntu: 16.04
-				<ul>
-					<li>Arch: x64</li>
-				</ul>
-			</li>
+			<li>Ubuntu: 16.04</li>
+			<li>Arch: x64</li>
 		</ul>
-	</li>	
+	</li>
 	<li>Tools
 		<ul>
 			<li>Atom: 1.17.0 x64</li>
