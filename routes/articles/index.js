@@ -7,7 +7,7 @@ const flash = require('connect-flash');
 const Article = require('../../models/article');
 
 // user profile
-router.get('/posts', (req, res) => {
+router.get('/', (req, res) => {
 	Article.find({}, (err, articles) => {
 		if (err) {
 			console.log(err);
