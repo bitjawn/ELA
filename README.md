@@ -9,13 +9,13 @@
 					<li>Arch: x64</li>
 				</ul>
 			</li>
-			<li>Tools
-				<ul>
-					<li>Atom: 1.17.0 x64</li>
-					<li>NodeJS: 7.10.0</li>
-					<li>NPM: 5.0.1</li>
-				</ul>
-			</li>
+		</ul>
+	</li>	
+	<li>Tools
+		<ul>
+			<li>Atom: 1.17.0 x64</li>
+			<li>NodeJS: 7.10.0</li>
+			<li>NPM: 5.0.1</li>
 		</ul>
 	</li>
 	<li>Passport: 0.3.2</li>
