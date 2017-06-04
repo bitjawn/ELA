@@ -7,16 +7,15 @@ const flash = require('connect-flash');
 const Post = require('../../models/post');
 
 // user profile
-router.get('/posts', isLoggedIn, (req, res) => {
-	let user = req.user;
-	return res.render('users/profile', {
-		title:cfc('profile'),
-		user:user, greeting:timeOfDay(user),
-		fname:cfc(user.fname),
-		lname:cfc(user.lname),
-		uname:cfc(user.uname),
-		email:cfc(user.email)});
+router.get('/posts', (req, res) => {
+	Post.find({}, (err, posts) => {
+		if (err) {
+			console.log(err);
+		}
+		res.render('posts/list', {title:cfc('articles'), articles:posts});
 	});
+});
+
 module.exports = router;
 
 function postDate() {
@@ -26,7 +25,7 @@ function postDate() {
 
 function postTime() {
 	let date = new Date();
-	
+
 }
 
 function isLoggedIn(req, res, next) {
