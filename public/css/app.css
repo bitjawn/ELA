@@ -42,8 +42,15 @@ body {
 	padding: 10px;
 }
 
+.add-article,
+.search-articles {
+	width: 15%;
+	margin:25px;
+}
 
-
+.article-list {
+	margin:10px;
+}
 
 
 
