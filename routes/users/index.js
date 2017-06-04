@@ -85,6 +85,7 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		next();
 	} else {
+		req.flash('errors', ['You must be logged in to access this resource']);
 		res.redirect('/users/signin');
 	}
 }
