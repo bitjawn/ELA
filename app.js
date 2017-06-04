@@ -1,7 +1,7 @@
 const express = require('express');
 const ehbs = require('express-handlebars');
 const path = require('path');
-const database = require('./config/database').database;
+const database = require('./config/database').datastore.database;
 
 const bodyParser = require('body-parser');
 const session = require('express-session');
