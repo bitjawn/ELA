@@ -43,7 +43,9 @@ body {
 }
 
 .add-article,
-.search-articles {
+.search-articles,
+.view-article,
+.edit-article {
 	width: 15%;
 	margin:25px;
 }

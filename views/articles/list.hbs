@@ -9,7 +9,14 @@
 			<li class="accordion-item" data-accordion-item>
 				<a href="#{{id}}" class="accordion-title">{{title}}</a>
 				<div class="accordion-content" data-tab-content id="{{id}}">
-					{{body}}
+					<div class="row" style="margin-left:25px; margin-right:25px; margin-bottom:10px;">
+						{{body}}
+					</div>
+
+					<div class="row" style="margin-left:25px; margin-right:25px;">
+						<a href="#" data-id="{{id}}" class="left-floater button primary view-article">View {{title}}</a>
+						<a href="#" data-id="{{id}}" class="right-floater button success edit-article">Edit {{title}}</a>
+					</div>
 				</div>
 			</li>
 		{{/each}}
