@@ -1,5 +1,5 @@
 <div class="row article-list">
-	<a href="#addArticle" class="button left-floater add-article" data-toggle>Add Article</a>
+	<a href="#addArticle" class="button left-floater add-article" data-toggle="addArticle">Add Article</a>
 	<a href="#" class="button right-floater search-articles" data-toggle="searchArticles">Search Articles</a>
 
 
@@ -9,14 +9,21 @@
 </div>
 
 <div class="row">
-	<div>
-		<div class="off-canvas-wrapper">
-			<div class="off-canvas position-left" id="searchArticles" data-off-canvas>
-				<!-- Your menu or Off-canvas content goes here -->
-			</div>
-			<div class="off-canvas-content"  data-off-canvas-content>
+	<div class="off-canvas-wrapper" style="background-color:black; color:white;">
+		<div class="off-canvas position-left search" style="background-color:rgb(4,1,1); color:rgb(250,250,255);" id="searchArticles" data-off-canvas>
+
 				<p>I have nothing to do with the off-canvas on the right!</p>
-			</div>
 		</div>
+		<div class="off-canvas-content"  data-off-canvas-content></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="off-canvas-wrapper" style="background-color:black; color:white;">
+		<div class="off-canvas position-right search" style="background-color:rgb(4,1,1); color:rgb(250,250,255);" id="addArticle" data-off-canvas>
+
+				<p>I have nothing to do with the off-canvas on the right!</p>
+		</div>
+		<div class="off-canvas-content"  data-off-canvas-content></div>
 	</div>
 </div>
