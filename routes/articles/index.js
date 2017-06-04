@@ -4,15 +4,15 @@ const cfc = require('../../modules/cfc');
 const csrf = require('csurf');
 const csrfProtection = csrf();
 const flash = require('connect-flash');
-const Post = require('../../models/post');
+const Article = require('../../models/article');
 
 // user profile
 router.get('/posts', (req, res) => {
-	Post.find({}, (err, posts) => {
+	Article.find({}, (err, articles) => {
 		if (err) {
 			console.log(err);
 		}
-		res.render('posts/list', {title:cfc('articles'), articles:posts});
+		res.render('articles/list', {title:cfc('articles'), articles:articles});
 	});
 });
 

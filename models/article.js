@@ -2,7 +2,7 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcryptjs');
 
-var postSchema = new Schema({
+var articleSchema = new Schema({
     title: {type: String, required: true},
     Author: {type: String, required: true},
 		postDate: {type: String, required: true},
@@ -23,4 +23,4 @@ userSchema.statics.findByDate = function(keyword, cb) {
   return this.find({postDate: new RegExp(keyword, 'i')}, cb);
 };
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model('Article', articleSchema);
