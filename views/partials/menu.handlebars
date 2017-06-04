@@ -6,7 +6,13 @@
 <div class="top-bar" id="main-menu">
 	<div class="top-bar-left">
 		<ul class="dropdown menu" data-responsive-menu="drilldown medium-dropdown">
-			<li class="menu-text">Dashboard</li>
+			<li class="menu-text">
+				{{#if session.req.user}}
+					{{session.req.user.fname}}
+				{{else}}
+					Dashboard
+				{{/if}}
+			</li>
 			<li>
 				<a href="/">Site</a>
 				<ul class="menu vertical">
