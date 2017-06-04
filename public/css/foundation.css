@@ -2890,12 +2890,12 @@ select {
   left: 0;
   width: 250px;
   height: 100%;
-  -ms-transform: translateX(-250px);
+  -ms-transform: translateX(-450px);
       transform: translateX(-250px);
   overflow-y: auto; }
   .position-left.is-open ~ .off-canvas-content {
-    -ms-transform: translateX(250px);
-        transform: translateX(250px); }
+    -ms-transform: translateX(450px);
+        transform: translateX(450px); }
   .position-left.is-transition-push::after {
     position: absolute;
     top: 0;
@@ -2913,12 +2913,12 @@ select {
   right: 0;
   width: 250px;
   height: 100%;
-  -ms-transform: translateX(250px);
+  -ms-transform: translateX(450px);
       transform: translateX(250px);
   overflow-y: auto; }
   .position-right.is-open ~ .off-canvas-content {
-    -ms-transform: translateX(-250px);
-        transform: translateX(-250px); }
+    -ms-transform: translateX(-450px);
+        transform: translateX(-450px); }
   .position-right.is-transition-push::after {
     position: absolute;
     top: 0;
