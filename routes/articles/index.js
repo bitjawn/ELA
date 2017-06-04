@@ -6,13 +6,23 @@ const csrfProtection = csrf();
 const flash = require('connect-flash');
 const Article = require('../../models/article');
 
-// user profile
+// list articles
 router.get('/', (req, res) => {
 	Article.find({}, (err, articles) => {
 		if (err) {
 			console.log(err);
 		}
 		res.render('articles/list', {title:cfc('articles'), articles:articles});
+	});
+});
+
+// view single article
+router.get('/article/:id', (req, res) => {
+	Article.findOne({'id':req.params.id}, (err, article) => {
+		if (err) {
+			console.log(err);
+		}
+		res.render('articles/article', {title:cfc(article.title), article:article});
 	});
 });
 
