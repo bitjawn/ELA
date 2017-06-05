@@ -29,15 +29,18 @@ router.get('/list', (req, res) => {
 
 // display single article
 router.get('/article/:id', (req, res) => {
-	Article.findById(req.params.id, (err, art) => {
+	let aId = req.params.id.split(';')[0];
+	let uId = req.params.id.split(';')[1];
+
+
+	Article.findById(aId, (err, art) => {
 		if (err) {
 			console.log(err);
 			return;
 		}
-		// console.log(art);
-		// res.sendStatus(200);
+
 		let result = art;
-		User.findById(result.author, (err, user) => {
+		User.findById(art.author, (err, user) => {
 			let article = {};
 			article.title = result.title;
 			article.author = cfc(user.fname) + ' ' + cfc(user.lname);
@@ -46,7 +49,11 @@ router.get('/article/:id', (req, res) => {
 			article.postTime = result.postTime;
 			article.private = result.private;
 			article.body = result.body;
-			res.render('articles/article', {title:cfc(result.title), article:article});
+
+
+			let match = user.id == uId;
+
+			res.render('articles/article', {title:cfc(result.title), article:article, isAuthor:match});
 		});
 	});
 });
@@ -79,17 +86,42 @@ router.delete('/delete', isLoggedIn, (req, res) => {
 });
 
 // search
-router.post('/search/all', (req, res) => {
+router.post('/search', (req, res) => {
 	let searchType = req.body.type;
 	let keyword = req.body.search;
 
 	switch (searchType) {
 		case 'title':
+		Article.findByTitle(keyword, (err, art) => {
+			if (err) {
+				console.log(err);
+				return;
+			}
 
+			if (null != art && undefined != art && 'undefined' != art) {
+				if (Object.keys(art).length) {
+					User.findById(art.author, (err, user) => {
+						let article = {};
+						article.title = art.title;
+						article.author = user.fname + ' ' + user.lname;
+						article.postDate = art.postDate;
+						article.postTime = art.postTime;
+						article.url = art.url || '';
+						article.body = art.body;
+						res.render('articles/article', {title:cfc(article.title), article:article});
+					});
+				} else {
+					res.redirect('/articles/list');
+				}
+			} else {
+
+					res.redirect('/articles/list');
+			}
+			});
 			break;
 
 		case 'author':
-			
+
 			break;
 	}
 });

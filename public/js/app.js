@@ -1,5 +1,24 @@
 $(document)
 .ready(function(){
+  $('.view-article').on('click', function(){
+    var $aId = $(this).data('id');
+    var $uId = $('.user-id').data('user');
+    var $IDs = $aId + ';' + $uId;
+
+    var $url = '/articles/article/' + $IDs;
+
+    $.ajax({
+      type:'GET',
+      url:$url,
+      success:function(response) {
+        window.location.href='article/' + $IDs;
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+
+  });
 
   $('.private').val($('.show').is(':checked'));
 
