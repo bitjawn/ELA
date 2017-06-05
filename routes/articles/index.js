@@ -46,7 +46,7 @@ router.get('/article/:id', (req, res) => {
 			article.postTime = result.postTime;
 			article.private = result.private;
 			article.body = result.body;
-			res.render('articles/view', {title:cfc(result.title), article:article});
+			res.render('articles/article', {title:cfc(result.title), article:article});
 		});
 	});
 });
