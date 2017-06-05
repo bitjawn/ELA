@@ -82,8 +82,25 @@
 <div class="row">
 	<div class="off-canvas-wrapper" style="background-color:black; color:white;">
 		<div class="off-canvas position-left search" style="background-color:rgb(4,1,1); color:rgb(250,250,255);" id="searchArticles" data-off-canvas>
+			<h4 class="header" style="color:rgb(250,250,255);">Search Articles</h4>
+			<form method="POST" action="/articles/search" style="margin:35px; color:rgb(250,250,255);">
+				<div class="input-group">
+					<span class="input-group-label">
+						<i class="fa fa-search"></i>
+					</span>
+					<input type="text" name="search" class="input-group-field" placeholder="Search" required>
+				</div>
 
-			<p>I have nothing to do with the off-canvas on the right!</p>
+				<div class="input-group">
+					<input type="radio" name="type" class="input-group-field show" value="title" checked> Search titles  &nbsp;&nbsp;
+					<input type="radio" name="type" class="input-group-field show" value="author"> Search authors
+				</div>
+
+				<div class="input-group-button">
+					<input type="submit" class="button" value="Submit" style="background-color:rgb(250,250,255); color: rgb(4,1,1);">
+				</div>
+
+			</form>
 		</div>
 		<div class="off-canvas-content"  data-off-canvas-content></div>
 	</div>
