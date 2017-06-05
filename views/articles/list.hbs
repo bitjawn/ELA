@@ -1,109 +1,21 @@
 {{#if login}}
 
-
-
 <div class="row article-list">
 	<a href="#addArticle" class="button left-floater add-article" data-toggle="addArticle">Add Article</a>
 	<a href="#" class="button right-floater search-articles" data-toggle="searchArticles">Search Articles</a>
 </div>
 
-<div class="row v-scroll list">
-	<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="false">
-		{{#each articles}}
-			<li class="accordion-item" data-accordion-item>
-				<a href="#{{id}}" class="accordion-title">{{title}}</a>
-				<div class="accordion-content" data-tab-content id="{{id}}">
-					<div class="card">
-						<div class="card-divider">
-							<h4 class="header">{{title}}</h4>
-							<p style="text-align:left; margin:0; padding:0;">
-								Posted: &nbsp; {{postDate}}
-							</p>
-						</div>
-
-						<div class="card-section">
-							{{body}}
-						</div>
-
-						<div class="card-section">
-							<a href="/articles/article/{{id}}" class="center-floater button primary view-article">View {{title}}</a>
-						</div>
-					</div>
-				</div>
-			</li>
-		{{/each}}
-	</ul>
-</div>
-
-<div class="row">
-	<div class="off-canvas-wrapper" style="background-color:black; color:white;">
-		<div class="off-canvas position-left search" style="background-color:rgb(4,1,1); color:rgb(250,250,255);" id="searchArticles" data-off-canvas>
-
-				<p>I have nothing to do with the off-canvas on the right!</p>
-		</div>
-		<div class="off-canvas-content"  data-off-canvas-content></div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="off-canvas-wrapper" style="background-color:black; color:white;">
-		<div class="off-canvas position-right search" style="background-color:rgb(4,1,1); color:rgb(250,250,255);" id="addArticle" data-off-canvas>
-			<h4 class="header" style="color:rgb(250,250,255);">Add Article</h4>
-			<form method="POST" action="/articles/add" style="margin:35px; color:rgb(250,250,255);">
-				<div class="input-group">
-					<span class="input-group-label">
-						<i class="fa fa-header"></i>
-					</span>
-					<input type="text" name="title" class="input-group-field" placeholder="Title" required>
-				</div>
-
-				<div class="input-group">
-					<span class="input-group-label">
-						<i class="fa fa-external-link"></i>
-					</span>
-					<input type="text" name="url" class="input-group-field" placeholder="URL">
-				</div>
-
-				<div class="input-group">
-					<span class="input-group-label">
-						<i class="fa fa-edit"></i>
-					</span>
-					<textarea type="text" name="body" class="input-group-field" placeholder="Body" required></textarea>
-				</div>
-
-				<div class="input-group">
-					<span class="input-group-label">
-						<i class="fa fa-check"></i>
-					</span>&nbsp;
-					<input type="checkbox" name="show" class="input-group-field show" value="Keep private"> Keep private
-				</div>
-
-				<input type="hidden" name="private" required class="input-group-field private">
-
-				<div class="input-group-button">
-					<input type="submit" class="button" value="Submit">
-				</div>
-
-			</form>
-		</div>
-		<div class="off-canvas-content"  data-off-canvas-content></div>
-	</div>
-</div>
-
-
-
-
-
 {{else}}
-
-
-
 
 
 <div class="row article-list">
 	<a href="#" class="button right-floater search-articles" data-toggle="searchArticles">Search Articles</a>
 </div>
 
+
+{{/if}}
+
+
 <div class="row v-scroll list">
 	<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="false">
 		{{#each articles}}
@@ -186,7 +98,3 @@
 		<div class="off-canvas-content"  data-off-canvas-content></div>
 	</div>
 </div>
-
-
-
-{{/if}}
