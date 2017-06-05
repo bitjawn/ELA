@@ -92,36 +92,53 @@ router.post('/search', (req, res) => {
 
 	switch (searchType) {
 		case 'title':
-		Article.findByTitle(keyword, (err, art) => {
-			if (err) {
-				console.log(err);
-				return;
-			}
-
-			if (null != art && undefined != art && 'undefined' != art) {
-				if (Object.keys(art).length) {
-					User.findById(art.author, (err, user) => {
-						let article = {};
-						article.title = art.title;
-						article.author = user.fname + ' ' + user.lname;
-						article.postDate = art.postDate;
-						article.postTime = art.postTime;
-						article.url = art.url || '';
-						article.body = art.body;
-						res.render('articles/article', {title:cfc(article.title), article:article});
-					});
-				} else {
-					res.redirect('/articles/list');
+			Article.findByTitle(keyword, (err, art) => {
+				if (err) {
+					console.log(err);
+					return;
 				}
-			} else {
 
-					res.redirect('/articles/list');
-			}
-			});
+				if (null != art && undefined != art && 'undefined' != art) {
+					if (Object.keys(art).length) {
+						User.findById(art.author, (err, user) => {
+							let article = {};
+							article.title = art.title;
+							article.author = user.fname + ' ' + user.lname;
+							article.postDate = art.postDate;
+							article.postTime = art.postTime;
+							article.url = art.url || '';
+							article.body = art.body;
+							res.render('articles/article', {title:cfc(article.title), article:article});
+						});
+					} else {
+						res.redirect('/articles/list');
+					}
+				} else {
+						res.redirect('/articles/list');
+				}
+				});
 			break;
 
 		case 'author':
+			User.find({}, (err, users) => {
+				if (err) {
+					console.log(err);
+				}
 
+				for (var u in users) {
+					let user = users[u];
+					let name = user.fname + ' ' + user.lname;
+					if (keyword == name) {
+						Article.findByAuthor(user.id, (err, articles) => {
+							if (err) {
+								console.log(err);
+							}
+
+							res.render('articles/list', {title:cfc('articles'), articles:articles});
+						});
+					} 
+				}
+			});
 			break;
 	}
 });
