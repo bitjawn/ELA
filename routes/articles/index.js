@@ -73,6 +73,12 @@ router.post('/add', isLoggedIn, (req, res) => {
 	});
 });
 
+// delete articles
+router.delete('/delete', isLoggedIn, (req, res) => {
+
+});
+
+
 module.exports = router;
 
 function postDate() {
