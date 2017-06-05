@@ -1,6 +1,12 @@
 $(document)
 .ready(function(){
 
+  $('.private').val($('.show').is(':checked'));
+
+  $('.show').change(function(){
+    $('.private').val($(this).is(':checked'));
+  });
+
   $('#textInput').on('click', function(){
     addTextInput();
   });
