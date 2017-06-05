@@ -13,7 +13,7 @@ var articleSchema = new Schema({
 });
 
 articleSchema.statics.findByTitle = function(keyword, cb) {
-  return this.find({title: new RegExp(keyword, 'i')}, cb);
+  return this.findOne({title: new RegExp(keyword.trim(), 'i')}, cb);
 };
 
 articleSchema.statics.findByAuthor = function(keyword, cb) {

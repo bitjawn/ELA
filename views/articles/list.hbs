@@ -83,7 +83,11 @@
 	<div class="off-canvas-wrapper" style="background-color:black; color:white;">
 		<div class="off-canvas position-left search" style="background-color:rgb(4,1,1); color:rgb(250,250,255);" id="searchArticles" data-off-canvas>
 			<h4 class="header" style="color:rgb(250,250,255);">Search Articles</h4>
-			<form method="POST" action="/articles/search" style="margin:35px; color:rgb(250,250,255);">
+			{{#if req.session.user}}
+				<form method="POST" action="/articles/search" style="margin:35px; color:rgb(250,250,255);">
+			{{else}}
+				<form method="POST" action="/articles/search/all" style="margin:35px; color:rgb(250,250,255);">
+			{{/if}}
 				<div class="input-group">
 					<span class="input-group-label">
 						<i class="fa fa-search"></i>

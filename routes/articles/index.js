@@ -79,10 +79,62 @@ router.delete('/delete', isLoggedIn, (req, res) => {
 });
 
 // search user articles
-router.get('/search', (req, res) => {});
+router.post('/search', (req, res) => {
+	let searchType = req.body.type;
+
+	switch (searchType) {
+		case 'title':
+			console.log(searchType);
+			res.sendStatus(200);
+			break;
+
+		case 'author':
+			console.log(searchType);
+			res.sendStatus(200);
+			break;
+	}
+});
 
 // search all articles
-router.get('/search', (req, res) => {});
+router.post('/search/all', (req, res) => {
+	let searchType = req.body.type;
+	let keyword = req.body.search;
+
+	switch (searchType) {
+		case 'title':
+			Article.findByTitle(keyword, (err, results) => {
+				if (err) {
+					console.log(err);
+				}
+				res.render('articles/list', {title:cfc('articles'), articles:results});
+			});
+			break;
+
+		case 'author':
+			User.find({}, (err, users) => {
+				if (err) {
+					console.log(err);
+					return;
+				}
+
+				for (var u in users) {
+					var user = users[u];
+					let name = user.fname + ' ' + user.lname;
+					let id = user._id;
+					if (name == keyword) {
+						Article.findByAuthor(id, (err, articles) => {
+							if (err) {
+								console.log(err);
+								return;
+							}
+							res.render('articles/list', {title:cfc('authors'), articles:articles});
+						});
+					}
+				}
+			});
+			break;
+	}
+});
 
 module.exports = router;
 
