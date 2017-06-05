@@ -73,11 +73,16 @@ router.post('/add', isLoggedIn, (req, res) => {
 	});
 });
 
-// delete articles
+// delete article
 router.delete('/delete', isLoggedIn, (req, res) => {
 
 });
 
+// search user articles
+router.get('/search', (req, res) => {});
+
+// search all articles
+router.get('/search', (req, res) => {});
 
 module.exports = router;
 
