@@ -1,24 +1,52 @@
-<div class="row v-scroll list">
-	<div class="card">
-		<div class="card-divider">
-			<h4 class="header">{{article.title}}</h4>
-			<p style="text-align:left; margin:0; padding:0;">
-				Author: {{article.author}}</br>
-				Posted: {{article.postDate}} @ {{article.postTime}}
-				{{#if article.url}}
-				</br>URL: {{article.url}}
-				{{/if}}
-			</p>
-		</div>
+{{#if login}}
+	<div class="row v-scroll list">
+		<div class="card">
+			<div class="card-divider">
+				<h4 class="header">{{article.title}}</h4>
+				<p style="text-align:left; margin:0; padding:0;">
+					Author: {{article.author}}</br>
+					Posted: {{article.postDate}} @ {{article.postTime}}
+					{{#if article.url}}
+					</br>URL: {{article.url}}
+					{{/if}}
+				</p>
+			</div>
 
-		<div class="card-section">
-			{{article.body}}
+			<div class="card-section">
+				{{article.body}}
+			</div>
+					<div class="card-section clearfix">
+						<a href="/articles/article/edit/{{id}}" class="left-floater button primary view-article">Edit {{article.title}}</a>
+						<a href="#" data-id="{{id}}" class="right-floater button alert delete-article">Delete {{article.title}}</a>
+					</div>
 		</div>
-		{{#if login}}
-				<div class="card-section clearfix">
-					<a href="/articles/article/edit/{{id}}" class="left-floater button primary view-article">Edit {{article.title}}</a>
-					<a href="#" data-id="{{id}}" class="right-floater button alert delete-article">Delete {{article.title}}</a>
-				</div>
-		{{/if}}
 	</div>
-</div>
+
+{{else}}
+
+	{{#if article.private}}
+
+	{{else}}
+
+		<div class="row v-scroll list">
+			<div class="card">
+				<div class="card-divider">
+					<h4 class="header">{{article.title}}</h4>
+					<p style="text-align:left; margin:0; padding:0;">
+						Author: {{article.author}}</br>
+						Posted: {{article.postDate}} @ {{article.postTime}}
+						{{#if article.url}}
+						</br>URL: {{article.url}}
+						{{/if}}
+					</p>
+				</div>
+
+				<div class="card-section">
+					{{article.body}}
+				</div>
+			</div>
+		</div>
+		
+	{{/if}}
+
+{{/if}}

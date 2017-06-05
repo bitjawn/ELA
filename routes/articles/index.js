@@ -79,7 +79,7 @@ router.delete('/delete', isLoggedIn, (req, res) => {
 });
 
 // search user articles
-router.post('/search', (req, res) => {
+router.post('/search/:id', (req, res) => {
 	let searchType = req.body.type;
 
 	switch (searchType) {
@@ -102,11 +102,26 @@ router.post('/search/all', (req, res) => {
 
 	switch (searchType) {
 		case 'title':
-			Article.findByTitle(keyword, (err, results) => {
+			Article.findByTitle(keyword, (err, art) => {
 				if (err) {
 					console.log(err);
+					return;
 				}
-				res.render('articles/list', {title:cfc('articles'), articles:results});
+				User.findById(art.author, (err, user) => {
+					if (err) {
+						console.log(err);
+						return;
+					}
+					let article = {};
+					article.title = art.title;
+					article.author = user.fname + ' ' + user.lname;
+					article.url = art.url || '';
+					article.postDate = art.postDate;
+					article.postTime = art.postTime;
+					article.private = art.private;
+					article.body = art.body;
+					res.render('articles/article', {title:cfc(article.title), article:article});
+				});
 			});
 			break;
 
