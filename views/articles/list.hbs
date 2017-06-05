@@ -16,9 +16,6 @@
 <div class="row v-scroll list">
 	<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="false">
 		{{#each articles}}
-			{{#if private }}
-
-			{{else}}
 
 				<li class="accordion-item" data-accordion-item>
 					<a href="#{{id}}" class="accordion-title">{{title}}</a>
@@ -41,8 +38,6 @@
 						</div>
 					</div>
 				</li>
-
-			{{/if}}
 
 		{{/each}}
 	</ul>
