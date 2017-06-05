@@ -5,49 +5,85 @@
 	<a href="#" class="button right-floater search-articles" data-toggle="searchArticles">Search Articles</a>
 </div>
 
+<div class="row v-scroll list">
+	<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="false">
+		{{#each articles}}
+
+		<li class="accordion-item" data-accordion-item>
+			<a href="#{{id}}" class="accordion-title">{{title}}</a>
+			<div class="accordion-content" data-tab-content id="{{id}}">
+				<div class="card">
+					<div class="card-divider">
+						<h4 class="header">{{title}}</h4>
+						<p style="text-align:left; margin:0; padding:0;">
+							Posted: &nbsp; {{postDate}}
+						</p>
+					</div>
+
+					<div class="card-section">
+						{{body}}
+					</div>
+
+					<div class="card-section">
+						<a href="/articles/article/{{id}}" class="center-floater button primary view-article">View {{title}}</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		{{/each}}
+	</ul>
+</div>
+
 {{else}}
 
 <div class="row article-list">
 	<a href="#" class="button right-floater search-articles" data-toggle="searchArticles">Search Articles</a>
 </div>
 
-{{/if}}
-
 <div class="row v-scroll list">
 	<ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="false">
 		{{#each articles}}
+		{{#if private }}
 
-				<li class="accordion-item" data-accordion-item>
-					<a href="#{{id}}" class="accordion-title">{{title}}</a>
-					<div class="accordion-content" data-tab-content id="{{id}}">
-						<div class="card">
-							<div class="card-divider">
-								<h4 class="header">{{title}}</h4>
-								<p style="text-align:left; margin:0; padding:0;">
-									Posted: &nbsp; {{postDate}}
-								</p>
-							</div>
+		{{else}}
 
-							<div class="card-section">
-								{{body}}
-							</div>
-
-							<div class="card-section">
-								<a href="/articles/article/{{id}}" class="center-floater button primary view-article">View {{title}}</a>
-							</div>
-						</div>
+		<li class="accordion-item" data-accordion-item>
+			<a href="#{{id}}" class="accordion-title">{{title}}</a>
+			<div class="accordion-content" data-tab-content id="{{id}}">
+				<div class="card">
+					<div class="card-divider">
+						<h4 class="header">{{title}}</h4>
+						<p style="text-align:left; margin:0; padding:0;">
+							Posted: &nbsp; {{postDate}}
+						</p>
 					</div>
-				</li>
+
+					<div class="card-section">
+						{{body}}
+					</div>
+
+					<div class="card-section">
+						<a href="/articles/article/{{id}}" class="center-floater button primary view-article">View {{title}}</a>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		{{/if}}
 
 		{{/each}}
 	</ul>
 </div>
 
+{{/if}}
+
+
 <div class="row">
 	<div class="off-canvas-wrapper" style="background-color:black; color:white;">
 		<div class="off-canvas position-left search" style="background-color:rgb(4,1,1); color:rgb(250,250,255);" id="searchArticles" data-off-canvas>
 
-				<p>I have nothing to do with the off-canvas on the right!</p>
+			<p>I have nothing to do with the off-canvas on the right!</p>
 		</div>
 		<div class="off-canvas-content"  data-off-canvas-content></div>
 	</div>
