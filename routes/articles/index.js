@@ -78,75 +78,18 @@ router.delete('/delete', isLoggedIn, (req, res) => {
 
 });
 
-// search user articles
-router.post('/search/:id', (req, res) => {
-	let searchType = req.body.type;
-
-	switch (searchType) {
-		case 'title':
-			console.log(searchType);
-			res.sendStatus(200);
-			break;
-
-		case 'author':
-			console.log(searchType);
-			res.sendStatus(200);
-			break;
-	}
-});
-
-// search all articles
+// search
 router.post('/search/all', (req, res) => {
 	let searchType = req.body.type;
 	let keyword = req.body.search;
 
 	switch (searchType) {
 		case 'title':
-			Article.findByTitle(keyword, (err, art) => {
-				if (err) {
-					console.log(err);
-					return;
-				}
-				User.findById(art.author, (err, user) => {
-					if (err) {
-						console.log(err);
-						return;
-					}
-					let article = {};
-					article.title = art.title;
-					article.author = user.fname + ' ' + user.lname;
-					article.url = art.url || '';
-					article.postDate = art.postDate;
-					article.postTime = art.postTime;
-					article.private = art.private;
-					article.body = art.body;
-					res.render('articles/article', {title:cfc(article.title), article:article});
-				});
-			});
+
 			break;
 
 		case 'author':
-			User.find({}, (err, users) => {
-				if (err) {
-					console.log(err);
-					return;
-				}
-
-				for (var u in users) {
-					var user = users[u];
-					let name = user.fname + ' ' + user.lname;
-					let id = user._id;
-					if (name == keyword) {
-						Article.findByAuthor(id, (err, articles) => {
-							if (err) {
-								console.log(err);
-								return;
-							}
-							res.render('articles/list', {title:cfc('authors'), articles:articles});
-						});
-					}
-				}
-			});
+			
 			break;
 	}
 });
