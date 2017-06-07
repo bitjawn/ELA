@@ -104,6 +104,7 @@ router.delete('/delete', isLoggedIn, (req, res) => {
 router.post('/search', (req, res) => {
 	let searchType = req.body.type;
 	let keyword = req.body.search;
+	let user = null;
 
 	switch (searchType) {
 		case 'title':
@@ -141,22 +142,26 @@ router.post('/search', (req, res) => {
 				}
 
 				for (var u in users) {
-					let user = users[u];
-					let name = user.fname + ' ' + user.lname;
+					let objU = users[u];
+					let name = objU.fname + ' ' + objU.lname;
 					if (keyword == name) {
-						Article.findByAuthor(user.id, (err, articles) => {
-							if (err) {
-								console.log(err);
-							}
-							if (null != articles && undefined != articles && 'undefined' != articles) {
-								res.render('articles/list', {title:cfc('articles'), articles:articles});
-							}
-						});
-					} {
+						user = objU;
 						break;
 					}
 				}
-				res.redirect('/articles/list');
+
+				if (null != user && undefined != user && 'undefined' != user) {
+					Article.findByAuthor(user.id, (err, articles) => {
+						if (err) {
+							console.log(err);
+						}
+
+						res.render('articles/list', {title:cfc('articles'), articles:articles});
+					});
+				} else {
+					res.redirect('/articles/list');
+				}
+
 			});
 			break;
 	}
