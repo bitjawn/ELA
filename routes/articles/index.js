@@ -19,9 +19,24 @@ router.get('/', (req, res) => {
 
 // list articles for all users
 router.get('/list', (req, res) => {
-	Article.find({}, (err, articles) => {
+	let uid = '';
+	try {
+		uid = req.user.id || false;
+	} catch (error) {
+		uid = false;
+	}
+	
+	Article.find({}, (err, arts) => {
 		if (err) {
 			console.log(err);
+		}
+		let articles = [];
+		for (var a in arts) {
+			let article = arts[a];
+			if (article.author == uid) {
+				article.isAuthor = true;
+			}
+			articles.push(article);
 		}
 		res.render('articles/list', {title:cfc('articles'), articles:articles});
 	});
@@ -136,7 +151,7 @@ router.post('/search', (req, res) => {
 
 							res.render('articles/list', {title:cfc('articles'), articles:articles});
 						});
-					} 
+					}
 				}
 			});
 			break;
@@ -144,6 +159,12 @@ router.post('/search', (req, res) => {
 });
 
 module.exports = router;
+
+function log(data) {
+	if (null != data && undefined != data && 'undefined' != data) {
+		console.log(data);
+	}
+}
 
 function postDate() {
 	let date = new Date();
