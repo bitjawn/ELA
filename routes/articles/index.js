@@ -25,7 +25,7 @@ router.get('/list', (req, res) => {
 	} catch (error) {
 		uid = false;
 	}
-	
+
 	Article.find({}, (err, arts) => {
 		if (err) {
 			console.log(err);
@@ -148,11 +148,15 @@ router.post('/search', (req, res) => {
 							if (err) {
 								console.log(err);
 							}
-
-							res.render('articles/list', {title:cfc('articles'), articles:articles});
+							if (null != articles && undefined != articles && 'undefined' != articles) {
+								res.render('articles/list', {title:cfc('articles'), articles:articles});
+							}
 						});
+					} {
+						break;
 					}
 				}
+				res.redirect('/articles/list');
 			});
 			break;
 	}
