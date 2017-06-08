@@ -119,7 +119,7 @@ router.post('/article/edit/:id', isLoggedIn, (req, res) => {
 	article.postDate = req.body.postDate;
 	article.postTime = req.body.postTime;
 	article.url = (req.body.url)? (strU.hasHTTP(req.body.url)?req.body.url:'http://' + req.body.url) : '';
-	article.private = req.body.isPrivate;
+	article.private = req.body.private;
 
 	let query = {_id:req.params.id};
 

@@ -26,10 +26,10 @@
 			<span class="input-group-label">
 				<i class="fa fa-check"></i>
 			</span>&nbsp;
-			<input type="checkbox" name="show" class="input-group-field show" value="Keep private"> Keep private
+			<input type="checkbox" name="show" class="input-group-field edit-show" value="Keep private"> Keep private
 		</div>
 
-		<input type="hidden" name="isPrivate" required class="input-group-field private">
+		<input type="text" name="private" class="input-group-field edit-private" value="{{article.private}}">
 		<input type="hidden" name="author" class="input-group-field" value="{{article.author}}">
 		<input type="hidden" name="postDate" class="input-group-field" value="{{article.postDate}}">
 		<input type="hidden" name="postTime" class="input-group-field" value="{{article.postTime}}">
@@ -38,6 +38,14 @@
 			<input type="submit" class="button left-floater edit-article" value="Submit">
 			<input type="button" class="button success right-floater cancel-article" value="Cancel">
 		</div>
+
+		<script>
+			$('.edit-show').prop('checked', $('.edit-private').val());
+
+			$('.edit-show').change(function(){
+				$('.edit-private').val($(this).is(':checked'));
+			});
+		</script>
 
 	</form>
 </div>

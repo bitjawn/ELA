@@ -20,10 +20,19 @@ $(document)
 
   });
 
-  $('.private').val($('.show').is(':checked'));
+  // $('.private').val($('.show').is(':checked'));
 
   $('.show').change(function(){
     $('.private').val($(this).is(':checked'));
+  });
+
+  // $('.edit-private').val($('.edit-show').is(':checked'));
+
+
+
+
+  $('.edit-show').change(function(){
+    $('.edit-private').val($(this).is(':checked'));
   });
 
   $('#textInput').on('click', function(){
