@@ -157,6 +157,7 @@ router.post('/search', (req, res) => {
 							article.postTime = art.postTime;
 							article.url = art.url || '';
 							article.body = art.body;
+							article.private = art.private;
 							res.render('articles/article', {title:cfc(article.title), article:article});
 						});
 					} else {
