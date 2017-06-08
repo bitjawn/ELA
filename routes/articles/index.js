@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 	});
 });
 
-// list articles for all users
+// list articles
 router.get('/list', (req, res) => {
 	let uid = '';
 	try {
@@ -43,7 +43,7 @@ router.get('/list', (req, res) => {
 	});
 });
 
-// display single article
+// view article
 router.get('/article/:id', (req, res) => {
 	let aId = req.params.id.split(';')[0];
 	let uId = req.params.id.split(';')[1];
