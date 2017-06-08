@@ -46,7 +46,8 @@ body {
 .search-articles,
 .view-article,
 .edit-article,
-.delete-article {
+.delete-article,
+.cancel-article {
 	width: 15%;
 	margin:25px;
 	font-weight: bold;
