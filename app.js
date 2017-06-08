@@ -41,7 +41,13 @@ app.use(session({
     store: new MongoStore({mongooseConnection: mongoose.connection}),
     cookie: {maxAge: 180 * 60 * 1000}
 }));
-app.use(flash());
+
+// app.use(require('connect-flash')());
+// app.use(function (req, res, next) {
+//   res.locals.messages = require('express-messages')(req, res);
+//   next();
+// });
+
 app.use(passport.initialize());
 app.use(passport.session());
 

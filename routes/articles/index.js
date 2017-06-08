@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cfc = require('../../modules/cfc');
+const strU = require('../../modules/strUtils');
 const csrf = require('csurf');
 const csrfProtection = csrf();
 const flash = require('connect-flash');
@@ -110,8 +111,26 @@ router.get('/article/edit/:id', isLoggedIn, (req, res) => {
 	});
 });
 
-router.post('/edit', isLoggedIn, (req, res) => {
+router.post('/article/edit/:id', isLoggedIn, (req, res) => {
+	let article = {};
+	article.title = req.body.title;
+	article.author = req.body.author;
+	article.body = req.body.body;
+	article.postDate = req.body.postDate;
+	article.postTime = req.body.postTime;
+	article.url = (req.body.url)? (strU.hasHTTP(req.body.url)?req.body.url:'http://' + req.body.url) : '';
+	article.private = req.body.isPrivate;
 
+	let query = {_id:req.params.id};
+
+	Article.update(query, article, (err) => {
+		if (err) {
+			console.log(err);
+			return;
+		} else {
+			res.redirect('/articles/list');
+		}
+	});
 });
 
 // search
