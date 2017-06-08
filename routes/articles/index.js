@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 
 // list articles
 router.get('/list', (req, res) => {
+	let warnings = req.flash('warning');
 	let uid = '';
 	try {
 		uid = req.user.id || false;
@@ -39,7 +40,7 @@ router.get('/list', (req, res) => {
 			}
 			articles.push(article);
 		}
-		res.render('articles/list', {title:cfc('articles'), articles:articles});
+		res.render('articles/list', {title:cfc('articles'), articles:articles, hasWarning:warnings.length, warning:warnings});
 	});
 });
 
@@ -197,6 +198,7 @@ router.post('/search', (req, res) => {
 						res.render('articles/list', {title:cfc('articles'), articles:articles});
 					});
 				} else {
+					req.flash('warning', 'Author not found:\n\t' + keyword);
 					res.redirect('/articles/list');
 				}
 
