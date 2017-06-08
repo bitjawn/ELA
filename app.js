@@ -4,10 +4,10 @@ const path = require('path');
 const database = require('./config/database').datastore.database;
 
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
+const session = require('express-session');
 const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const logger = require('morgan');
@@ -33,7 +33,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(validator());
+// app.use(validator());
 app.use(session({
     secret: 'goodlucktoyou',
     resave:false,
@@ -42,11 +42,30 @@ app.use(session({
     cookie: {maxAge: 180 * 60 * 1000}
 }));
 
+// express messages
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
   next();
 });
+
+// express validator
+app.use(validator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

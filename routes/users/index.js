@@ -32,11 +32,12 @@ router.get('/', notLoggedIn, (req, res, next) => {
 // signin
 router.get('/signin', csrfProtection, (req, res) => {
 	let messages = req.flash('errors') || [];
+
 	res.render('users/signin', {
 		title:cfc('signin'),
 		csrfToken:req.csrfToken(),
 		hasErrors:messages.length > 0,
-		messages:messages
+		errors:messages
 	});
 });
 
@@ -54,7 +55,7 @@ router.get('/signup', csrfProtection, (req, res) => {
 		csrfToken:req.csrfToken(),
 		isAdmin:false,
 		hasErrors:messages.length > 0,
-		messages:messages
+		errors:messages
 	});
 });
 

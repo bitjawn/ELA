@@ -1,3 +1,13 @@
+{{#if errors}}
+	{{#each errors}}
+		<div class="alert callout" data-closable style="margin:10px;">
+			<p>{{.}}</p>
+			<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+			 <span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	{{/each}}
+{{/if}}
 
 <div class="form row" style="margin:25px; padding:10px;">
 	<h3 class="header">Registration</h3>
