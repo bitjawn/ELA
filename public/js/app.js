@@ -28,7 +28,19 @@ $(document)
 
   // $('.edit-private').val($('.edit-show').is(':checked'));
 
-
+  $('.cancel-edit').on('click', function(){
+    $url = '/articles/list';
+    $.ajax({
+      url:$url,
+      type:'GET',
+      success:function(response) {
+        window.location.href = $url;
+      },
+      error:function(err) {
+        console.log(err);
+      }
+    });
+  });
 
 
   $('.edit-show').change(function(){
