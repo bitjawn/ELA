@@ -100,6 +100,15 @@ router.delete('/delete', isLoggedIn, (req, res) => {
 
 });
 
+// edit article
+router.get('/edit', isLoggedIn, (req, res) => {
+
+});
+
+router.post('/edit', isLoggedIn, (req, res) => {
+
+});
+
 // search
 router.post('/search', (req, res) => {
 	let searchType = req.body.type;
