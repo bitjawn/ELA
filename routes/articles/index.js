@@ -98,8 +98,12 @@ router.post('/add', isLoggedIn, (req, res) => {
 });
 
 // delete article
-router.delete('/delete', isLoggedIn, (req, res) => {
+router.delete('/article/delete/:id', isLoggedIn, (req, res) => {
+	let query = {_id:req.params.id};
 
+	Article.remove(query, (err) => {
+		res.send('success');
+	});
 });
 
 // edit article

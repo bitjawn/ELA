@@ -42,6 +42,23 @@ $(document)
     });
   });
 
+  $('.delete-article').on('click', function(){
+    $aId = $(this).data('id');
+    $url = '/articles/article/delete/' + $aId;
+
+    if (confirm('Are you sure you want to delete this article?')) {
+      $.ajax({
+        url:$url,
+        type:'DELETE',
+        success:function(response) {
+          window.location.href = '/articles/list';
+        },
+        error: function(err) {
+          console.log(err);
+        }
+      });
+    }
+  });
 
   // $('.edit-show').change(function(){
   //   $('.edit-private').val($(this).is(':checked'));
