@@ -43,9 +43,9 @@ $(document)
   });
 
 
-  $('.edit-show').change(function(){
-    $('.edit-private').val($(this).is(':checked'));
-  });
+  // $('.edit-show').change(function(){
+  //   $('.edit-private').val($(this).is(':checked'));
+  // });
 
   $('#textInput').on('click', function(){
     addTextInput();
