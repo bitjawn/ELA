@@ -29,14 +29,14 @@
 			<input type="checkbox" name="show" class="input-group-field edit-show" value="Keep private"> Keep private
 		</div>
 
-		<input type="text" name="private" class="input-group-field edit-private" value="{{article.private}}">
+		<input type="hidden" name="private" class="input-group-field edit-private" value="{{article.private}}">
 		<input type="hidden" name="author" class="input-group-field" value="{{article.author}}">
 		<input type="hidden" name="postDate" class="input-group-field" value="{{article.postDate}}">
 		<input type="hidden" name="postTime" class="input-group-field" value="{{article.postTime}}">
 
 		<div class="input-group-button">
 			<input type="submit" class="button left-floater edit-article" value="Submit">
-			<input type="button" class="button success right-floater cancel-article" value="Cancel">
+			<input type="button" class="button success right-floater cancel-edit" value="Cancel">
 		</div>
 
 		<script>
