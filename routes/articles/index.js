@@ -169,7 +169,8 @@ router.post('/search', (req, res) => {
 						res.redirect('/articles/list');
 					}
 				} else {
-						res.redirect('/articles/list');
+					req.flash('warning', 'Article not found:\n\t' + keyword);
+					res.redirect('/articles/list');
 				}
 				});
 			break;
