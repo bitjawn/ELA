@@ -1,0 +1,42 @@
+<div class="row">
+	<h4 class="header">Editing {{article.title}}</h4>
+	<form method="POST" action="/articles/edit" style="margin:35px;">
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-header"></i>
+			</span>
+			<input type="text" name="title" class="input-group-field" value="{{article.title}}" required placeholder="Title">
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-globe"></i>
+			</span>
+			<input type="text" name="url" class="input-group-field" value="{{article.url}}" placeholder="URL">
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-edit"></i>
+			</span>
+			<textarea type="text" name="body" class="input-group-field" value="{{article.body}}" required>{{article.body}}</textarea>
+		</div>
+
+		<div class="input-group">
+			<span class="input-group-label">
+				<i class="fa fa-check"></i>
+			</span>&nbsp;
+			<input type="checkbox" name="show" class="input-group-field show" value="Keep private"> Keep private
+		</div>
+
+		<input type="hidden" name="private" required class="input-group-field private">
+		<input type="hidden" name="author" class="input-group-field" value="{{article.author}}">
+		<input type="hidden" name="postDate" class="input-group-field" value="{{article.postDate}}">
+		<input type="hidden" name="postTime" class="input-group-field" value="{{article.postTime}}">
+
+		<div class="input-group-button">
+			<input type="submit" class="button" value="Submit">
+		</div>
+
+	</form>
+</div>

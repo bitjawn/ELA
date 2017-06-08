@@ -64,6 +64,7 @@ router.get('/article/:id', (req, res) => {
 			article.postTime = result.postTime;
 			article.private = result.private;
 			article.body = result.body;
+			article.id = result.id;
 
 
 			let match = user.id == uId;
@@ -101,8 +102,12 @@ router.delete('/delete', isLoggedIn, (req, res) => {
 });
 
 // edit article
-router.get('/edit', isLoggedIn, (req, res) => {
-
+router.get('/article/edit/:id', isLoggedIn, (req, res) => {
+	// console.log('\n\n\tEditing Article: ' + req.params.id);
+	// res.sendSTatus(200);
+	Article.findById(req.params.id, (err, article) => {
+		res.render('articles/edit', {title:cfc(article.title), article:article});
+	});
 });
 
 router.post('/edit', isLoggedIn, (req, res) => {
