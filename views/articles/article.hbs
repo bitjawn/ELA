@@ -1,3 +1,14 @@
+{{#if messages}}
+	{{#each messages}}
+	<div class="alert callout" data-closable style="margin:10px;">
+		<p>{{.}}</p>
+		<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+		 <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	{{/each}}
+{{/if}}
+
 {{#if login}}
 
 	{{#if isAuthor}}

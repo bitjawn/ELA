@@ -20,7 +20,8 @@ router.get('/', (req, res) => {
 
 // list articles
 router.get('/list', (req, res) => {
-	let warnings = req.flash('warning');
+	let warnings = req.flash('warning') || [];
+	let success = req.flash('success') || [];
 	let uid = '';
 	try {
 		uid = req.user.id || false;
@@ -40,7 +41,13 @@ router.get('/list', (req, res) => {
 			}
 			articles.push(article);
 		}
-		res.render('articles/list', {title:cfc('articles'), articles:articles, hasWarning:warnings.length, warning:warnings});
+		res.render('articles/list', {
+		title:cfc('articles'),
+		articles:articles,
+		hasWarning:warnings.length,
+		warning:warnings,
+		hasSuccess:success.length > 0,
+		success:success});
 	});
 });
 
@@ -93,7 +100,7 @@ router.post('/add', isLoggedIn, (req, res) => {
 			return;
 		} else {
 			req.flash('success', 'Article Added');
-			res.redirect('/articles/');
+			res.redirect('/articles/list');
 		}
 	});
 });
@@ -103,7 +110,12 @@ router.delete('/article/delete/:id', isLoggedIn, (req, res) => {
 	let query = {_id:req.params.id};
 
 	Article.remove(query, (err) => {
-		res.send('success');
+		if (err) {
+			console.log(err);
+		} else {
+			req.flash('success', 'Article deleted');
+			res.send('success');
+		}
 	});
 });
 
